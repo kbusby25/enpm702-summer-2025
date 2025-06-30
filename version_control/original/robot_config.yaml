@@ -1,0 +1,79 @@
+# Configuration File for Autonomous Delivery Robot
+# This file contains all the critical parameters for the robot's operation,
+# from hardware specifications to navigation and mission settings.
+
+# --- HARDWARE SPECIFICATIONS ---
+# Defines the core computing and sensor components of the robot.
+hardware:
+  # Onboard computer specifications.
+  cpu: "Quad-Core ARM Cortex-A72"
+  memory: "4GB LPDDR4"
+  storage: "64GB eMMC"
+
+  # Defines all sensory inputs for the robot.
+  sensors:
+    # Primary sensor for 360-degree obstacle detection and mapping.
+    lidar:
+      enabled: true
+      model: "LDS-01"
+      range: 12.0 # Effective range in meters.
+
+    # Primary sensor for visual data, lane detection, and object recognition.
+    camera:
+      enabled: true
+      model: "IMX477"
+      resolution: "1920x1080"
+      fps: 30
+
+# --- NAVIGATION PARAMETERS ---
+# Governs the robot's movement, pathfinding, and obstacle avoidance logic.
+navigation:
+  # The frequency (in Hz) at which the navigation stack runs its main control loop.
+  # A higher rate allows for faster reaction to environmental changes.
+  update_rate: 10 # Hz
+  # Top speed of the robot. Set to a safe speed for pedestrian environments.
+  max_speed: 1.5   # meters/sec (approx. 3.35 mph)
+  # Maximum acceleration to ensure smooth and stable movement.
+  acceleration: 0.5 # m/s^2
+  # The algorithm used for global pathfinding from current location to destination.
+  path_planning_algorithm: "A*"
+  # Local obstacle avoidance strategy.
+  obstacle_avoidance:
+    enabled: true
+    # Method for dynamically avoiding unexpected obstacles.
+    method: "Vector Field Histogram (VFH)"
+
+# --- POWER SYSTEM ---
+# Manages the robot's battery and charging behavior.
+power_management:
+  battery_type: "Li-ion"
+  capacity_wh: 500 # Total energy capacity in Watt-hours.
+  # The battery percentage at which the robot will abort its mission and return to base.
+  low_battery_threshold: 15 # percentage
+  # Determines if the robot should automatically find its charging dock when low on power.
+  auto_recharge_enabled: true
+
+# --- GPS & WAYPOINT CONFIGURATION ---
+# Parameters for the GPS module and the logic for handling mission waypoints.
+# gps:
+#   enabled: true
+#   # The specific GPS module model. u-blox ZED-F9P is a high-precision, RTK-capable module.
+#   provider: "u-blox ZED-F9P"
+#   # Expected precision. RTK (Real-Time Kinematics) provides highly accurate location data.
+#   accuracy: "Centimeter-level with RTK"
+#   # The geodetic datum to use for coordinate interpretation. WGS84 is the global standard.
+#   datum: "WGS84"
+
+  # Defines how the robot handles mission destinations based on GPS coordinates.
+  waypoints:
+    # The maximum number of destinations the robot can handle in a single mission.
+    max_waypoints: 50
+    # The acceptable margin of error (in meters) for arriving at a waypoint.
+    precision: 1.0  # meters
+    # If true, the robot will automatically return to its home base after completing all waypoints.
+    auto_return_home: true
+    # The geographic coordinates of the robot's home base or charging station.
+    # NOTE: Coordinates are for Damascus Centre, a central commercial location in Damascus, MD.
+    home_coordinates:
+      latitude: 39.2771
+      longitude: -77.2055
