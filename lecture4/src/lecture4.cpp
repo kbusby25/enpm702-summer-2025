@@ -136,20 +136,20 @@ int main()
     // //==============
     // //======== 11
     // //==============
-    // // initialization
-    // std::string quote{"Just a flesh wound"};
+    // initialization
+    std::string quote{"Just a flesh wound"};
 
-    // // access characters
-    // std::cout << quote.front() << '\n'; // return a ref to 1st character
-    // quote.front() = 'j';                // modify the 1st character
-    // std::cout << quote[0] << '\n';      // return the 1st character
-    // std::cout << quote[5] << '\n';      // return the 6th character
-    // std::cout << quote.at(5) << '\n';   // return the 6th character
-    // std::cout << quote.back() << '\n';  // return a ref to the last character
-    // quote.back() = 'D';                 // modify the last character
-    // std::cout << quote.back() << '\n';
-    // quote[6] = 'A';    // modify the 7th character
-    // quote.at(6) = 'a'; // modify the 7th character
+    // access characters
+    std::cout << quote.front() << '\n'; // return a ref to 1st character
+    quote.front() = 'j';                // modify the 1st character
+    std::cout << quote[0] << '\n';      // return the 1st character
+    std::cout << quote[5] << '\n';      // return the 6th character
+    std::cout << quote.at(5) << '\n';   // return the 6th character
+    std::cout << quote.back() << '\n';  // return a ref to the last character
+    quote.back() = 'D';                 // modify the last character
+    std::cout << quote.back() << '\n';
+    quote[6] = 'A';    // modify the 7th character
+    quote.at(6) = 'a'; // modify the 7th character
 
     // //==============
     // //======== 12
@@ -773,7 +773,4 @@ int main()
     // {
     //     std::cout << "my_vector is not empty.\n";
     // }
-
-    //==============
-    //======== 51
-    //==============
+}
