@@ -330,6 +330,7 @@ int main()
     //======== 26
     //==============
 
+
     // std::string my_string(10, 'x');
     // std::cout << "Capacity is " << my_string.capacity()       // ?
     //           << " and size is " << my_string.size() << '\n'; // ?
