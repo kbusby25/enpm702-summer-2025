@@ -2,7 +2,7 @@
  * @file lecture4.cpp
  * @author Zeid Kootbally (zeidk@umd.edu)
  * @brief Code snippets for lecture 4 on STL containers
- * @version 0.1
+ * @version 2.1
  * @date 2025-06-17
  *
  * @copyright Copyright (c) 2025
