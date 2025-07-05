@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(enpm702_summer2025 VERSION 0.1.0 LANGUAGES C CXX)
 
-add_compile_options(-Wall)
+add_compile_options(-Wall -pedantic-errors)
 add_executable(lecture1_cpp lecture1/src/lecture1.cpp)
 add_executable(lecture2_cpp lecture2/src/lecture2.cpp)
 add_executable(lecture3_cpp lecture3/src/lecture3.cpp)

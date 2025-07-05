@@ -137,19 +137,19 @@ int main()
     // //======== 11
     // //==============
     // initialization
-    std::string quote{"Just a flesh wound"};
+    // std::string quote{"Just a flesh wound"};
 
-    // access characters
-    std::cout << quote.front() << '\n'; // return a ref to 1st character
-    quote.front() = 'j';                // modify the 1st character
-    std::cout << quote[0] << '\n';      // return the 1st character
-    std::cout << quote[5] << '\n';      // return the 6th character
-    std::cout << quote.at(5) << '\n';   // return the 6th character
-    std::cout << quote.back() << '\n';  // return a ref to the last character
-    quote.back() = 'D';                 // modify the last character
-    std::cout << quote.back() << '\n';
-    quote[6] = 'A';    // modify the 7th character
-    quote.at(6) = 'a'; // modify the 7th character
+    // // access characters
+    // std::cout << quote.front() << '\n'; // return a ref to 1st character
+    // quote.front() = 'j';                // modify the 1st character
+    // std::cout << quote[0] << '\n';      // return the 1st character
+    // std::cout << quote[5] << '\n';      // return the 6th character
+    // std::cout << quote.at(5) << '\n';   // return the 6th character
+    // std::cout << quote.back() << '\n';  // return a ref to the last character
+    // quote.back() = 'D';                 // modify the last character
+    // std::cout << quote.back() << '\n';
+    // quote[6] = 'A';    // modify the 7th character
+    // quote.at(6) = 'a'; // modify the 7th character
 
     // //==============
     // //======== 12
@@ -166,6 +166,13 @@ int main()
     // //==============
     // //======== 14
     // //==============
+    // std::string quote{"Just a flesh wound!"};
+
+    // for (size_t i{0}; i < quote.size(); ++i)
+    // {
+    //     std::cout << quote.at(i) << '\t';
+    // }
+    // std::cout << '\n';
     /*
     write a for loop to print each character of the string
     */
@@ -175,10 +182,13 @@ int main()
     // //==============
     // std::string quote{"Just a flesh wound!"};
 
-    // for (char c : quote)
+    // for (const auto &c : quote)
     // {
+    //     // c = 'a';
     //     std::cout << c << ' ';
     // }
+    //     // std::cout << quote << ' ';
+
     // std::cout << '\n';
 
     // //==============
@@ -272,22 +282,22 @@ int main()
     // //======== 22
     // //==============
     // std::string s;
-    // std::cout << "Size of std::string is " << sizeof s << " bytes\n" //?
-    //           << "Default-constructed capacity is " << s.capacity() // ?
-    //           << " and size is " << s.size() << '\n';               // ?
+    // std::cout << "Size of std::string is " << sizeof s << " bytes\n" //32
+    //           << "Default-constructed capacity is " << s.capacity() // 15
+    //           << " and size is " << s.size() << '\n';               // 0
 
     // for (int i = 0; i < 42; i++)
     //     s.append(" 42 ");
-    // std::cout << "Capacity after 42 appends is " << s.capacity() // ?
-    //           << " and size is " << s.size() << '\n';            // ?
+    // std::cout << "Capacity after 42 appends is " << s.capacity() // 240
+    //           << " and size is " << s.size() << '\n';            // 168
 
     // s.clear();
-    // std::cout << "Capacity after clear() is " << s.capacity() // ?
-    //           << " and size is " << s.size() << '\n';         // ?
+    // std::cout << "Capacity after clear() is " << s.capacity() // 240
+    //           << " and size is " << s.size() << '\n';         // 0
 
     // s.shrink_to_fit();
-    // std::cout << "Capacity after shrink_to_fit() is " << s.capacity() // ?
-    //           << " and size is " << s.size() << '\n';                 // ?
+    // std::cout << "Capacity after shrink_to_fit() is " << s.capacity() // 15
+    //           << " and size is " << s.size() << '\n';                 // 0
 
     //==============
     //======== 23
@@ -329,7 +339,6 @@ int main()
     //==============
     //======== 26
     //==============
-
 
     // std::string my_string(10, 'x');
     // std::cout << "Capacity is " << my_string.capacity()       // ?
@@ -479,21 +488,21 @@ int main()
 
     // for (size_t i{0}; i < std::size(my_array); ++i)
     // {
-    //     // write code here
+    //     std::cout << *(ptr + i) << '\n';
     // }
 
     //==============
     //======== 34
     //==============
-    // constexpr size_t length1{3};
-    // size_t length2{3};
+    constexpr size_t length1{3};
+    size_t length2{3};
 
-    // // C++ array
+    // C++ array
     // std::array<int, 3> cpp_array1{};       // ok: 3 is a compile-time constant
     // std::array<int, length1> cpp_array2{}; // ok: length1 is a compile-time constant
     // std::array<int, length2> cpp_array3{}; // Error: length2 is not a compile-time constant
 
-    // // C array
+    // C array
     // int c_array1[3]{};       // ok: 3 is a compile-time constant
     // int c_array2[length1]{}; // ok: length1 is a compile-time constant
     // int c_array3[length2]{}; // Error: length2 is not a compile-time constant
@@ -602,28 +611,28 @@ int main()
     //==============
     //======== 41
     //==============
-    // std::vector<int> vec = {1, 2, 3, 4, 5};
+    std::vector<int> vec = {1, 2, 3, 4, 5};
 
-    // std::cout << "Initial size: " << vec.size() << '\n';
-    // std::cout << "Initial capacity: " << vec.capacity() << '\n';
+    std::cout << "Initial size: " << vec.size() << '\n'; //5
+    std::cout << "Initial capacity: " << vec.capacity() << '\n'; //5
 
-    // // Reserve space
-    // vec.reserve(20);
-    // std::cout << "Size: " << vec.size() << '\n';
-    // std::cout << "Capacity: " << vec.capacity() << '\n';
+    // Reserve space
+    vec.reserve(20);
+    std::cout << "Size: " << vec.size() << '\n'; //5
+    std::cout << "Capacity: " << vec.capacity() << '\n';//20
 
-    // // Add more elements to the vector
-    // for (auto i{0}; i < 60; ++i)
-    //     vec.push_back(i);
+    // Add more elements to the vector
+    for (auto i{0}; i < 60; ++i)
+        vec.push_back(i);
 
-    // // Display updated size and capacity
-    // std::cout << "Size: " << vec.size() << '\n';
-    // std::cout << "Capacity: " << vec.capacity() << '\n';
+    // Display updated size and capacity
+    std::cout << "Size: " << vec.size() << '\n'; //65
+    std::cout << "Capacity: " << vec.capacity() << '\n'; //80
 
-    // // Shrink the vector to fit its size
-    // vec.shrink_to_fit();
-    // std::cout << "Size: " << vec.size() << '\n';
-    // std::cout << "Capacity: " << vec.capacity() << '\n';
+    // Shrink the vector to fit its size
+    vec.shrink_to_fit();
+    std::cout << "Size: " << vec.size() << '\n'; //65
+    std::cout << "Capacity: " << vec.capacity() << '\n'; //65
 
     //==============
     //======== 42
