@@ -13,9 +13,28 @@ Simple main function to describe the build process of a C++ project.
 - References
 
 ## Lecture 4: STL Containers
-- String
-- Array
-- Vector
+
+### Learning Objectives
+
+- Declare, initialize, and manipulate `std::string` objects using common methods for access, modification, concatenation, and insertion operations.
+- Describe the internal memory model of `std::string`, including Small String Optimization (SSO), the relationship between size and capacity, and dynamic memory allocation strategies.
+- Manage `std::string` memory usage efficiently using `reserve()`, `resize()`, and `shrink_to_fit()` methods.
+- Compare and contrast C-style arrays with `std::array`, understanding compilation requirements and safety considerations.
+- Declare, initialize, and manipulate both single and multidimensional arrays using proper syntax and access patterns.
+- Understand the dynamic nature of `std::vector`, including its memory management, capacity growth strategies, and performance characteristics.
+- Perform efficient insertion and deletion operations on vectors using `push_back()`, `emplace_back()`, `insert()`, `erase()`, and related methods.
+- Apply best practices for memory management across all STL container types to write efficient and maintainable code.
+
+## Lecture 5: Functions
+
+### Learning Objectives
+
+- Understand function fundamentals including benefits, declarations vs definitions, and file organization with headers.
+- Master function mechanics including calls, parameter passing (by value, reference, pointer), and proper documentation practices.
+- Implement advanced function features including static variables, return value handling, function overloading, and default parameters.
+- Analyze program execution using stack frames and implement recursive functions with proper base cases.
+
+## Lecture 6: Smart Pointers
 
 ## Reading Material
 - Basic Types
