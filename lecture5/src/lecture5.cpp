@@ -9,70 +9,13 @@
  *
  */
 
+// #include "lecture5.hpp"
 #include <iomanip>
 #include <iostream>
 #include <vector>
 
-// function declaration/prototype
-int add_numbers(int a, int b);
-
-// function definition/implementation
-int add_numbers(int a, int b)
-{
-    return a + b;
-}
-
-std::vector<int> create_vector()
-{
-    return std::vector<int>{1, 2, 3};
-    //     ^^^^^^^^^^^^^^^^^^^^^^^^^
-    //     Prvalue - guaranteed RVO
-}
-//======== 3
-// void print_hello()
-// {
-//     std::cout << "hello, ";
-//     print_world();
-// }
-
-// void print_world()
-// {
-//     std::cout << "world\n";
-// }
-
-//======== 4
-// void prompt_user() {
-//     std::cout << "Enter a number: ";
-//     int num{};
-//     std::cin >> num;
-//     print_number(num);
-// }
-
-// void print_number(int number) {
-//     if (number == -1)
-//         return;
-
-//     if (number > 0)
-//         std::cout << "The number is: " << number << "\n";
-//     else
-//         prompt_user();
-// }
-
-//======== 5
-// void add_ten(int x)
-// {
-//     // Implicit int x{a};
-//     x += 10; // 15
-// }
-
-//======== 6
-// void add_ten(int &x) {
-//     // Implicit: int &x{a};
-//     x = x + 10;  // 15
-// }
-
-//======== 7
-// Exercise 4
+//======== 1
+// Exercise #1
 
 int main()
 {
@@ -83,8 +26,8 @@ int main()
     //==============
     //======== 2
     //==============
-
-    // std::cout << add_numbers(3, 5) << '\n';
+    // print_hello();
+    // std::cout << "exit main\n";
 
     //==============
     //======== 3
@@ -124,36 +67,54 @@ int main()
     //==============
     //======== 8
     //==============
+    // std::vector<int> num_vect{1, 2, 3, 4, 5};
+    // push_ten(num_vect);
+    // for (const auto &item : num_vect)
+    // {
+    //     std::cout << item << " "; // 1 2 3 4 5 6
+    // }
+    // std::cout << '\n';
 
     //==============
     //======== 9
     //==============
+    // std::vector<int> num_vect{1, 2, 3, 4, 5};
+    // print_vector(num_vect);
 
     //==============
     //======== 10
     //==============
+    // int a{5};
+    // add_ten(&a);
+    // std::cout << a << '\n'; // 15
 
     //==============
     //======== 11
     //==============
 
-    // std::vector<int> vect{create_vector()};
-    // // Construction directly in vect's location
-    // for (const auto &item: vect){
-    //     std::cout << item << '\n';
-    // }
+    // count_calls();  // 1 time(s);
+    // count_calls();  // 2 time(s);
+    // count_calls();  // 3 time(s);
 
     //==============
     //======== 12
     //==============
 
+    // add_to_sum(1); // 1
+    // add_to_sum(2); // 3
+    // add_to_sum(3); // 6
+    // add_to_sum(4); // 10
+
     //==============
     //======== 13
     //==============
+    // std::vector<int> vect{create_vector()};
+    // // Construction directly in vect's location
 
     //==============
     //======== 14
     //==============
+    // std::vector<int> result{create_vector()};
 
     //==============
     //======== 15
@@ -162,22 +123,47 @@ int main()
     //==============
     //======== 16
     //==============
+    // std::vector<int> v1{};
+    // v1 = create_vector();                // No copy elision
+    // std::cout << "&v1: " << &v1 << '\n'; //@2
 
     //==============
     //======== 17
     //==============
+    // std::vector<int> my_vector{1, 2, 3, 4, 5};
+
+    // // Get a reference to the element at index 2
+    // int &ref = get_element(my_vector, 2);
+
+    // // Modify the element via the reference
+    // ref = 10;
+
+    // // Check the new value
+    // std::cout << my_vector[2] << '\n';
 
     //==============
     //======== 18
     //==============
+    // std::vector<int> my_vector = {1, 2, 3, 4, 5};
+
+    // // Get a reference to the element at index 2
+    // const int &ref = get_element(my_vector, 2);
+
+    // // No intention of modifying the returned reference
+    // std::cout << ref << '\n';
 
     //==============
     //======== 19
     //==============
+    // f() = 5;         // 1
+    // auto &ref = f(); // 5
+    // ref = 10;
+    // f(); // 10
 
     //==============
     //======== 20
     //==============
+    // std::cout << add(2, 3) << '\n';
 
     //==============
     //======== 21
@@ -186,6 +172,11 @@ int main()
     //==============
     //======== 22
     //==============
+    // std::cout << add(2, 3) << '\n';           // add(int, int)
+    // std::cout << add(2, 3.5) << '\n';         // add(int, double)
+    // std::cout << add(2.5, 3) << '\n';         // add(double, int)
+    // std::cout << add(2.5, 3.2) << '\n';       // add(double, double)
+    // std::cout << add(2.5, 3.2, 4.75) << '\n'; // add(double, double, double)
 
     //==============
     //======== 23
@@ -194,6 +185,12 @@ int main()
     //==============
     //======== 24
     //==============
+
+    // std::cout << add(2, 3) << '\n';    // add(int, int) -- exact match
+    // std::cout << add(2, 3.5f) << '\n'; // add(int, float) -- exact match
+    // //==============
+    // std::cout << add(2.5, 3) << '\n';     // add(double, int) -- ???
+    // std::cout << add('h', false) << '\n'; // add(char, bool) -- ???
 
     //==============
     //======== 25
@@ -206,24 +203,27 @@ int main()
     //==============
     //======== 27
     //==============
+    // int x{10};
+    // int y{20};
+    // int z{};
+    // z = g(x, y);
+    // std::cout << z << '\n';
 
     //==============
     //======== 28
     //==============
-
-    //==============
-    //======== 29
-    //==============
-
-    //==============
-    //======== 30
-    //==============
-
-    //==============
-    //======== 31
-    //==============
-
-    //==============
-    //======== 32
-    //==============
+    // int n{};
+    // std::cout << "Enter a number: ";
+    // std::cin >> n;
+    // std::cout << "Factorial of " << n << " is " << factorial(n) << '\n';
 }
+
+//==============
+//======== 29
+//==============
+// int main(int argc, char *argv[]) {
+//     std::cout << "Number of arguments: " << argc << '\n';
+//     for (int i{0}; i < argc; i++) {
+//         std::cout << "Argument " << i << ": " << argv[i] << '\n';
+//     }
+// }
