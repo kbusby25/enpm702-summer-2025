@@ -36,6 +36,15 @@ Simple main function to describe the build process of a C++ project.
 
 ## Lecture 6: Smart Pointers
 
+### Learning Objectives
+
+- Explain RAII principles and implement automatic resource management using smart pointers to prevent memory leaks and ensure exception safety.
+- Analyze ownership semantics and select appropriate smart pointer types (`std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`) based on resource sharing requirements.
+- Implement exclusive ownership patterns using `std::unique_ptr` with proper initialization, move semantics, and method usage (`get()`, `release()`, `reset()`, `swap()`).
+- Design shared ownership systems using `std::shared_ptr` with reference counting, control blocks, and safe resource sharing across multiple objects.
+- Apply `std::weak_ptr` to break circular dependencies and implement safe resource observation without affecting object lifetimes.
+- Evaluate function parameter strategies (sink, reseat, return) and implement proper ownership transfer patterns in modern C++ applications.
+
 ## Reading Material
 - Basic Types
 - Operators
