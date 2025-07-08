@@ -55,3 +55,27 @@ Simple main function to describe the build process of a C++ project.
 - Git
 - GitHub
 
+## rwa2_enpm702_summer_2025
+
+### Assignment Overview
+This repository contains the starter code for Assignment #2 in ENPM702. Students will implement a **Dual-Sensor System** for an autonomous robot operating in a warehouse environment.
+
+### Learning Objectives
+- **Modern C++17 Features**: Structured bindings, range-based for loops, uniform initialization
+- **STL Containers**: Advanced usage of vector, tuple, map, unordered_map
+- **STL Algorithms**: std::accumulate and container operations
+- **Const-correctness**: Proper use of const, constexpr, and immutable data patterns
+- **Data Processing**: Statistical calculations, validation, and quality assessment
+- **Professional Output**: Formatted console output and modern C++ practices
+
+### System Description
+The robot uses two sensor types:
+- **LIDAR**: Measures distances to nearby objects for obstacle detection (8 readings per timestamp)
+- **Camera**: Captures RGB color values for environment analysis and lighting classification
+
+### Assignment Requirements
+- **Implementation**: All logic must be within the `main()` function
+- **C++17 Features**: Must demonstrate structured bindings, uniform initialization, const-correctness
+- **Data Processing**: Generate 5 timestamps of sensor data, validate quality, calculate statistics
+- **Modern Practices**: Use `'\n'` instead of `std::endl`, proper const usage, meaningful variable names
+
