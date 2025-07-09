@@ -9,7 +9,7 @@
  *
  */
 
-#include "utils.hpp"
+#include "../include/utils.hpp"
 #include <cassert> // for assert()
 #include <iomanip>
 #include <iostream>

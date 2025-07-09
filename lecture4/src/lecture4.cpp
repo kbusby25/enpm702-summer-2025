@@ -184,23 +184,24 @@ int main()
 
     // for (const auto &c : quote)
     // {
-    //     // c = 'a';
+    //     //c = 'a';
     //     std::cout << c << ' ';
     // }
-    //     // std::cout << quote << ' ';
+    //     //std::cout << quote << ' ';
+    
 
     // std::cout << '\n';
 
     // //==============
     // //======== 16
     // //==============
-    // std::string greeting{"Hi"};
-    // for (auto it{greeting.begin()};
-    //      it != greeting.end();
-    //      ++it)
-    // {
-    //     std::cout << *it << '\n';
-    // }
+    std::string greeting{"Hi"};
+    for (auto it{greeting.begin()};
+         it != greeting.end();
+         ++it) 
+    {
+        std::cout << *it << '\n';
+    }
 
     // //==============
     // //======== 17
@@ -611,28 +612,28 @@ int main()
     //==============
     //======== 41
     //==============
-    std::vector<int> vec = {1, 2, 3, 4, 5};
+    // std::vector<int> vec = {1, 2, 3, 4, 5};
 
-    std::cout << "Initial size: " << vec.size() << '\n'; //5
-    std::cout << "Initial capacity: " << vec.capacity() << '\n'; //5
+    // std::cout << "Initial size: " << vec.size() << '\n'; //5
+    // std::cout << "Initial capacity: " << vec.capacity() << '\n'; //5
 
-    // Reserve space
-    vec.reserve(20);
-    std::cout << "Size: " << vec.size() << '\n'; //5
-    std::cout << "Capacity: " << vec.capacity() << '\n';//20
+    // // Reserve space
+    // vec.reserve(20);
+    // std::cout << "Size: " << vec.size() << '\n'; //5
+    // std::cout << "Capacity: " << vec.capacity() << '\n';//20
 
-    // Add more elements to the vector
-    for (auto i{0}; i < 60; ++i)
-        vec.push_back(i);
+    // // Add more elements to the vector
+    // for (auto i{0}; i < 60; ++i)
+    //     vec.push_back(i);
 
-    // Display updated size and capacity
-    std::cout << "Size: " << vec.size() << '\n'; //65
-    std::cout << "Capacity: " << vec.capacity() << '\n'; //80
+    // // Display updated size and capacity
+    // std::cout << "Size: " << vec.size() << '\n'; //65
+    // std::cout << "Capacity: " << vec.capacity() << '\n'; //80
 
-    // Shrink the vector to fit its size
-    vec.shrink_to_fit();
-    std::cout << "Size: " << vec.size() << '\n'; //65
-    std::cout << "Capacity: " << vec.capacity() << '\n'; //65
+    // // Shrink the vector to fit its size
+    // vec.shrink_to_fit();
+    // std::cout << "Size: " << vec.size() << '\n'; //65
+    // std::cout << "Capacity: " << vec.capacity() << '\n'; //65
 
     //==============
     //======== 42
