@@ -190,44 +190,44 @@ int main()
     //     // *p3 = 3; // Error
     //     // p3 = &b; // Error
 
-    //==============
-    //======== 13
-    //==============
-    // int *p; // p is a wild pointer. It holds a garbage memory address.
+    //     // //==============
+    //     // //======== 13
+    //     // //==============
+    //     // int *p; // p is a wild pointer. It holds a garbage memory address.
 
-    // // The following line is UNDEFINED BEHAVIOR.
-    // // We are attempting to write the value 100 to an unknown memory address.
-    // *p = 100;
-    // // The program might crash here, or it might seem to continue,
-    // // having corrupted some unknown part of memory.
-    // std::cout << "This line may or may not be reached.\n";
+    //     // // The following line is UNDEFINED BEHAVIOR.
+    //     // // We are attempting to write the value 100 to an unknown memory address.
+    //     // *p = 100;
+    //     // // The program might crash here, or it might seem to continue,
+    //     // // having corrupted some unknown part of memory.
+    //     // std::cout << "This line may or may not be reached.\n";
 
-    // //==============
-    // //======== 14
-    // //==============
-    // int *p{new int{15}};
-    // std::cout << p << '\n'; // 0x55555556b2b0
-    // delete p;
-    // std::cout << p << '\n';  // 0x55555556b2b0
-    // std::cout << *p << '\n'; // UB
+    //     // //==============
+    //     // //======== 14
+    //     // //==============
+    //     // int *p{new int{15}};
+    //     // std::cout << p << '\n'; // 0x55555556b2b0
+    //     // delete p;
+    //     // std::cout << p << '\n';  // 0x55555556b2b0
+    //     // std::cout << *p << '\n'; // UB
 
-    //==============
-    //======== 15
-    //==============
-    // int *p{new int{5}}; // allocate and point to data on the heap
-    // delete p;           // free the heap memory
-    // int a{2};           // create a is on the stack
-    // p = &a;             // point to data on the stack
-    // p = new int{3};     // allocate and point to data on the heap
-    // delete p;           // free the heap memory
-    // p = nullptr;        // null pointer
+    //     // //==============
+    //     // //======== 15
+    //     // //==============
+    //     // int *p{new int{5}}; // allocate and point to data on the heap
+    //     // delete p;           // free the heap memory
+    //     // int a{2};           // create a is on the stack
+    //     // p = &a;             // point to data on the stack
+    //     // p = new int{3};     // allocate and point to data on the heap
+    //     // delete p;           // free the heap memory
+    //     // p = nullptr;        // null pointer
 
-    //==============
-    //======== 16
-    //==============
-    // int a{3};
-    // int *p{&a};
-    // delete p; // UB
+    //     // //==============
+    //     // //======== 16
+    //     // //==============
+    //     // int a{3};
+    //     // int *p{&a};
+    //     // delete p; // UB
 
     //     // //==============
     //     // //======== 17
@@ -235,18 +235,18 @@ int main()
     //     // int *p{nullptr};
     //     // delete p; // safe to delete a null pointer
 
-    //==============
-    //======== 18
-    //==============
-    // int *p{new int{2}};
-    // delete p;                // p is dangling
-    // *p = 5;                  // UB
-    // std::cout << *p << '\n'; // UB
+    //     // //==============
+    //     // //======== 18
+    //     // //==============
+    //     // int *p{new int{2}};
+    //     // delete p;                // p is dangling
+    //     // *p = 5;                  // UB
+    //     // std::cout << *p << '\n'; // UB
 
     // //==============
     // //======== 19
     // //==============
-    // int *p{nullptr};
+    // int *p = nullptr;
 
     // { // Inner scope starts
     //     int inner_variable{5};
@@ -266,9 +266,9 @@ int main()
     //     int *p{new int(i)};
     // }
 
-    //==============
-    //======== 21
-    //==============
+    // //==============
+    // //======== 21
+    // //==============
     // int *p1{new int{2}};
     // int *p2{p1};
 
@@ -309,26 +309,26 @@ int main()
     // std::cout << a << '\n';   // 20
     // a = 30;                   // ref is now 30
     // std::cout << ref << '\n'; // 30
-    // // //--
+    // //--
     // std::cout << &a << '\n';   // 0x7fffffffdadc
     // std::cout << &ref << '\n'; // 0x7fffffffdadc
-    // // //--
+    // //--
     // int b{3};
     // ref = b; // This assigns the value of b to a
 
     // //==============
     // //======== 24
     // //==============
-    int *p1{new int(10)};
-    int *p2{new int(20)};
-    int &ref{*p1};
+    // int *p1{new int(10)};
+    // int *p2{new int(20)};
+    // int &ref{*p1};
 
-    ref = *p2;
-    *p2 = 30;
-    p1 = new int(40);
-    delete p2;
-    *p1 = *p2;
-    int *p3{p2};
-    ref = 50;
-    delete p3;
+    // ref = *p2;
+    // *p2 = 30;
+    // p1 = new int(40);
+    // delete p2;
+    // *p1 = *p2;
+    // int *p3{p2};
+    // ref = 50;
+    // delete p3;
 }

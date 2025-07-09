@@ -4,20 +4,13 @@
 #define SQUARE(x) ((x) * (x))
 #define PI 3.14159
 
-namespace MyNamespace{
-    int x{3};
-    int y{4};
-}
-
-using namespace MyNamespace;
-
 int main()
 {
     //==============
     //======== 1
     //==============
-        // std::cout << "hello, world\n";
-        // return 0;
+        std::cout << "hello, world\n";
+        return 0;
 
     //==============
     //======== 2
