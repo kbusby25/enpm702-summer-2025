@@ -1,3 +1,14 @@
+/**
+ * @file sensor_types.hpp
+ * @author zeid kootbally (zeidk@umd.edu)
+ * @brief Variables and data structures for assignment #2
+ * @version 1.2
+ * @date 2025-07-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef SENSOR_TYPES_HPP
 #define SENSOR_TYPES_HPP
 

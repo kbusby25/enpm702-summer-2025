@@ -1,107 +1,88 @@
+/**
+ * @file main.cpp
+ * @author zeid kootbally (zeidk@umd.edu)
+ * @brief 
+ * @version 1.2
+ * @date 2025-07-11
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "sensor_types.hpp"
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <unordered_map>
-#include <string>
-#include <random>
 #include <algorithm>
+#include <iomanip>
+#include <iostream>
 #include <numeric>
+#include <random>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 int main() {
-    std::cout << "=== ROBOT DUAL-SENSOR SYSTEM ===\n\n";
-    
-    // ========================================================================
-    // STEP 1: Initialize Data Structures
-    // ========================================================================
-    
-    // Storage for all sensor data across timestamps
-    std::vector<TimestampData> sensor_readings;
-    
-    // Quality tracking variables
-    const std::unordered_map<std::string, int> initial_counts{{"LIDAR", 0}, {"Camera", 0}};
-    std::unordered_map<std::string, int> valid_readings{initial_counts};
-    std::unordered_map<std::string, int> total_readings{initial_counts};
-    
-    // Variables for calculating summary statistics
-    double total_lidar_avg_distance{0.0};
-    double total_camera_brightness{0.0};
-    int total_obstacles_detected{0};
-    int day_mode_count{0};
-    int night_mode_count{0};
-    
-    // ========================================================================
-    // STEP 2: Setup Random Number Generation
-    // ========================================================================
-    std::random_device rd;
-    std::mt19937 gen{rd()};
-    
-    // TODO: Create the required distributions
-    
-    
-    // ========================================================================
-    // STEP 3: Data Generation Loop (Timestamps 0-4)
-    // ========================================================================
-    std::cout << "Generating sensor data for 5 timestamps...\n\n";
-    
-    for (int timestamp{0}; timestamp < NUM_TIMESTAMPS; ++timestamp) {
-        TimestampData current_data;
-        current_data.timestamp = timestamp;
-        
-        // TODO: Generate LIDAR data (8 distance readings)
-     
-        // TODO: Generate Camera data (RGB tuple)
-    }
-    
-    // ========================================================================
-    // STEP 4: Data Processing Loop
-    // ========================================================================
-    for (const auto& data : sensor_readings) {
-        std::cout << "Processing Timestamp: " << data.timestamp << '\n';
-        
-        // ----------------------------------------------------------------
-        // LIDAR Processing
-        // ----------------------------------------------------------------
-        total_readings["LIDAR"]++;
-        
-        // TODO: Process LIDAR data
-        // Extract lidar readings
-        
-        // TODO: Calculate average distance using std::accumulate
-        
-        // TODO: Count obstacles (readings < 2.0 meters)
-    
-        
-        // TODO: Validate LIDAR data (all readings > 0.05m)
-        
-        // TODO: Display LIDAR output
-       
-        // ----------------------------------------------------------------
-        // Camera Processing
-        // ----------------------------------------------------------------
-        total_readings["Camera"]++;
-        
-        // TODO: Process Camera data using structured bindings
-        
-        // TODO: Calculate brightness and classify lighting
-          
-        // TODO: Validate Camera data (RGB values 0-255, brightness > 20)
-         
-        // TODO: Display Camera output
-    
-        std::cout << '\n';
-    }
-    
-    // ========================================================================
-    // STEP 5: Summary Statistics
-    // ========================================================================
-    std::cout << "=== SUMMARY STATISTICS ===\n";
-    
-    // TODO: Calculate and display total statistics
- 
-    // TODO: Calculate individual sensor reliability percentages
- 
-    // TODO: Display sensor reliability report
+  // Storage for all sensor data across timestamps
+  std::vector<TimestampData> sensor_readings;
 
-    // TODO: Display average sensor values and operational statistics
+  // Quality tracking variables
+  const std::unordered_map<std::string, int> initial_counts{{"LIDAR", 0},
+                                                            {"Camera", 0}};
+  std::unordered_map<std::string, int> valid_readings{initial_counts};
+  std::unordered_map<std::string, int> total_readings{initial_counts};
+
+  // Variables for calculating summary statistics
+  double total_lidar_avg_distance{0.0};
+  double total_camera_brightness{0.0};
+  int total_obstacles_detected{0};
+  int day_mode_count{0};
+  int night_mode_count{0};
+
+  std::cout << "=== ROBOT DUAL-SENSOR SYSTEM ===\n\n";
+
+  // ========================================================================
+  // Step 1: Data Generation and Storage
+  // ========================================================================
+  std::random_device rd;
+  std::mt19937 gen{rd()};
+  std::uniform_real_distribution<double> lidar_dist{LIDAR_MIN_RANGE,
+                                                    LIDAR_MAX_RANGE};
+  std::uniform_int_distribution<int> camera_dist{RGB_MIN, RGB_MAX};
+  // Create a vector to store all sensor readings
+  std::vector<TimestampData> sensor_readings;
+  sensor_readings.reserve(NUM_TIMESTAMPS); // Optional: pre-allocate space
+  // Generate and store data for all timestamps
+  for (int t = 0; t < NUM_TIMESTAMPS; ++t) {
+    // TODO: Generate LIDAR and Camera data
+    // TODO: Create TimestampData and add to vector
+  }
+
+  // ========================================================================
+  // Step 2: Data Processing Loop
+  // ========================================================================
+  for (const auto &data : sensor_readings) {
+    std::cout << "Processing Timestamp: " << data.timestamp << '\n';
+    // TODO: Process LIDAR and Camera sensors independently
+  }
+
+  // ========================================================================
+  // Step 3: Sensor-Specific Processing
+  // ========================================================================
+  // TODO: Lidar processing
+  // TODO: Camera processing
+
+  // ========================================================================
+  // Step 4: Quality Assessment and Status Determination
+  // ========================================================================
+  const std::unordered_map<std::string, int> initial_counts{{"LIDAR", 0},
+                                                            {"Camera", 0}};
+  std::unordered_map<std::string, int> valid_readings{initial_counts};
+  std::unordered_map<std::string, int> total_readings{initial_counts};
+
+  // TODO: Track sensor reliability (GOOD, POOR, DAY, NIGHT)
+
+  // ========================================================================
+  // STEP 5: Calculate summary statistics and display
+  // ========================================================================
+  std::cout << "=== SUMMARY STATISTICS ===\n";
+
+  // TODO: Calculate and display statistics for each sensor
 }
