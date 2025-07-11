@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.10.0)
 project(enpm702_summer2025 VERSION 0.1.0 LANGUAGES C CXX)
 
 add_compile_options(-Wall -pedantic-errors)
-# include_directories(lecture5/include)
+include_directories(lecture5/include)
 
 add_executable(lecture1_cpp lecture1/src/lecture1.cpp)
 add_executable(lecture2_cpp lecture2/src/lecture2.cpp)
 add_executable(lecture3_cpp lecture3/src/lecture3.cpp)
 add_executable(lecture4_cpp lecture4/src/lecture4.cpp)
-add_executable(lecture5_cpp lecture5/src/lecture5.cpp)
+add_executable(lecture5_cpp lecture5/src/lecture5.cpp lecture5/src/main.cpp)
 add_executable(lecture6_cpp lecture6/src/lecture6.cpp lecture6/src/utils.cpp)
 
 # Set C++17 standard for the target
