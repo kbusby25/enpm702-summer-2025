@@ -1,3 +1,8 @@
+/**
+ * @brief Source code for lecture 5 on functions. This file contains only function declarations.
+ * 
+ */
+
 //======== 2
 // void print_hello();
 // void print_world();
