@@ -1,201 +1,261 @@
 /**
  * @file lecture5.cpp
  * @author Zeid Kootbally (zeidk@umd.edu)
- * @brief Code snippets for lecture 5 on functions
- * @version 1.0
+ * @brief Function definitions for lecture 5 on functions.
+ * @version 2.0
  * @date 2025-07-03
  *
  * @copyright Copyright (c) 2025
  *
  */
 
-// #include "lecture5.hpp"
-#include <iomanip>
-#include <iostream>
-#include <vector>
+#include "lecture5.hpp"
 
-//======== 1
-// Exercise #1
+//======== 2
+// void print_hello()
+// {
+//     std::cout << "hello, ";
+//     print_world();
+// }
 
-int main() {
-  //======== 1
-  //==============
+// void print_world()
+// {
+//     std::cout << "world\n";
+// }
 
-  //======== 2
-  //==============
-  // print_hello();
-  // std::cout << "exit main\n";
+//======== 3
+// void print_hello()
+// {
+//     std::cout << "hello, ";
+//     print_world();
+// }
 
-  //======== 3
-  //==============
-  // print_hello();
-  // std::cout << "exit main\n";
+// void print_world()
+// {
+//     std::cout << "world\n";
+// }
 
-  //======== 4
-  //==============
-  // prompt_user();
+//======== 4
+// void prompt_user() {
+//     std::cout << "Enter a number: ";
+//     int num{};
+//     std::cin >> num;
+//     print_number(num);
+// }
 
-  //======== 5
-  //==============
-  // int a{5};
-  // add_ten(a);
-  // std::cout << a << '\n'; // 5
+// void print_number(int number) {
+//     if (number == -1)
+//         return;
 
-  //======== 6
-  //==============
-  // int a{5};
-  // add_ten(a);
-  // std::cout << a << '\n'; // 15
+//     if (number > 0)
+//         std::cout << "The number is: " << number << "\n";
+//     else
+//         prompt_user();
+// }
 
-  //======== 7
-  //==============
-  // int x{5};
-  // int y{10};
+//======== 5
+// void add_ten(int x)
+// {
+//     // Implicit int x{a};
+//     x += 10; // 15
+// }
 
-  // std::cout << x << ", " << y << '\n'; // 5, 10
-  // swap_values(x, y);
-  // std::cout << x << ", " << y << '\n'; // 10, 5
+//======== 6
+// void add_ten(int &x) {
+//     // Implicit: int &x{a};
+//     x = x + 10;  // 15
+// }
 
-  //======== 8
-  //==============
-  // std::vector<int> num_vect{1, 2, 3, 4, 5};
-  // push_ten(num_vect);
-  // for (const auto &item : num_vect)
-  // {
-  //     std::cout << item << " "; // 1 2 3 4 5 6
-  // }
-  // std::cout << '\n';
+//======== 7
+// Exercise 4
 
-  //======== 9
-  //==============
-  // std::vector<int> num_vect{1, 2, 3, 4, 5};
-  // print_vector(num_vect);
+//======== 8
+// void push_ten(std::vector<int> &v) {  // Passed by reference
+//     // Implicit: std::vector<int> &v{num_vect};
+//     v.push_back(6);
+// }
 
-  //======== 10
-  //==============
-  // int a{5};
-  // add_ten(&a);
-  // std::cout << a << '\n'; // 15
+//======== 9
+// void print_vector(const std::vector<int> &v) {  // Passed by const reference
+//     // Implicit: const std::vector<int> &v{num_vect};
+//     for (const int &item : v) {
+//         std::cout << item << " ";  // 1 2 3 4 5
+//     }
+//     // v.push_back(100);  // This would be an error since v is const
+// }
 
-  //======== 11
-  //==============
+//======== 10
+// void add_ten(int *p)
+// {
+//     // Implicit: int* p{&a};
+//     *p += 10;
+// }
 
-  // count_calls();  // 1 time(s);
-  // count_calls();  // 2 time(s);
-  // count_calls();  // 3 time(s);
+//======== 11
+// void count_calls()
+// {
+//     // static variable
+//     static int count{0};
+//     count++;
+//     std::cout << count << " time(s)\n";
+// }
 
-  //======== 12
-  //==============
+//======== 12
+// Exercise #5
 
-  // add_to_sum(1); // 1
-  // add_to_sum(2); // 3
-  // add_to_sum(3); // 6
-  // add_to_sum(4); // 10
+//======== 13
+// std::vector<int> create_vector()
+// {
+//     return std::vector<int>{1, 2, 3};
+//     //     ^^^^^^^^^^^^^^^^^^^^^^^^^
+//     //     Prvalue - guaranteed RVO
+// }
 
-  //======== 13
-  //==============
-  // std::vector<int> vect{create_vector()};
-  // // Construction directly in vect's location
+//======== 14
+// std::vector<int> create_vector()
+// {
+//     std::vector<int> local_vec{1, 2, 3};
+//     // ... potential operations on local_vec ...
+//     return local_vec; // Named object return
+// }
 
-  //======== 14
-  //==============
-  // std::vector<int> result{create_vector()};
+//======== 15
+// std::vector<int> conditional_return(bool flag)
+// {
+//     std::vector<int> vec1{1, 2, 3};
+//     std::vector<int> vec2{4, 5, 6};
+//     return flag ? vec1 : vec2; // NRVO fails!
+// }
 
-  //======== 15
-  //==============
+// std::vector<int> multiple_paths(int choice)
+// {
+//     std::vector<int> result{};
+//     if (choice == 1)
+//     {
+//         result = {1, 2, 3};
+//         return result; // NRVO fails!
+//     }
+//     else if (choice == 2)
+//     {
+//         result = {4, 5, 6};
+//         return result; // NRVO fails!
+//     }
+//     return result; // NRVO fails!
+// }
 
-  //======== 16
-  //==============
-  // std::vector<int> v1{};
-  // v1 = create_vector();                // No copy elision
-  // std::cout << "&v1: " << &v1 << '\n'; //@2
+//======== 16
+// std::vector<int> create_vector()
+// {
+//     std::vector<int> local_vect{1, 2, 3};
+//     std::cout << "&local_vect: " << &local_vect << '\n'; //@1
+//     return local_vect;
+// }
 
-  //======== 17
-  //==============
-  // std::vector<int> my_vector{1, 2, 3, 4, 5};
+//======== 17
+// // Function to return a reference to the element at a given index
+// int &get_element(std::vector<int> &vec, int index)
+// {
+//     return vec[index]; // Returning a reference to the element
+// }
 
-  // // Get a reference to the element at index 2
-  // int &ref = get_element(my_vector, 2);
+//======== 18
+// // Function to return a const reference to the element at a given index
+// const int &get_element(std::vector<int> &vec, int index)
+// {
+//     return vec[index]; // Returning a reference to the element
+// }
 
-  // // Modify the element via the reference
-  // ref = 10;
+//======== 19
+// // Function to return a reference to a static variable
+// int &f()
+// {
+//     static int var{1};
+//     std::cout << var << '\n';
+//     return var;
+// }
 
-  // // Check the new value
-  // std::cout << my_vector[2] << '\n';
+//======== 20
+// // Declaration
+// auto add(int a, int b);
 
-  //======== 18
-  //==============
-  // std::vector<int> my_vector = {1, 2, 3, 4, 5};
+// // Definition
+// auto add(int a, int b) { return a + b; }
 
-  // // Get a reference to the element at index 2
-  // const int &ref = get_element(my_vector, 2);
+//======== 21
+// int truncate_double()
+// {
+//     double value = 10.75;
+//     return value; // 10.75 → 10 (truncated)
+// }
 
-  // // No intention of modifying the returned reference
-  // std::cout << ref << '\n';
+// bool to_bool()
+// {
+//     int value = 0;
+//     return value; // 0 → false, non-zero → true
+// }
 
-  //======== 19
-  //==============
-  // f() = 5;         // 1
-  // auto &ref = f(); // 5
-  // ref = 10;
-  // f(); // 10
+// char to_char()
+// {
+//     int ascii = 65;
+//     return ascii; // 65 → 'A'
+// }
 
-  //======== 20
-  //==============
-  // std::cout << add(2, 3) << '\n';
+//======== 22
+// int add(int a, int b) { return a + b; }
+// double add(double a, double b) { return a + b; }
+// double add(int a, double b) { return a + b; }
+// double add(double a, int b) { return a + b; }
+// double add(double a, double b, double c) { return a + b + c; }
 
-  //======== 21
-  //==============
+//======== 23
+// double return_value(double a)
+// {
+//     return a;
+// }
 
-  //======== 22
-  //==============
-  // std::cout << add(2, 3) << '\n';           // add(int, int)
-  // std::cout << add(2, 3.5) << '\n';         // add(int, double)
-  // std::cout << add(2.5, 3) << '\n';         // add(double, int)
-  // std::cout << add(2.5, 3.2) << '\n';       // add(double, double)
-  // std::cout << add(2.5, 3.2, 4.75) << '\n'; // add(double, double, double)
+// int return_value(double a)
+// { // Error: redefinition of 'return_value'
+//     return a;
+// }
 
-  //======== 23
-  //==============
+//======== 24
+// int add(int a, int b) { return a + b; }
+// int add(int a, float b) { return a + b; }
+// //========
+// int add(int a, int b) { return a + b; }
+// int add(int a, float b) { return a + b; }
+// int add(int a, double b) { return a + b; }
 
-  //======== 24
-  //==============
+//======== 25
+// void add(int a, int b = 0, int c = 0); // Declaration with defaults
+// void add(int a, int b = 0, int c = 0)
+// { // ERROR: Defaults repeated!
+//     std::cout << a + b + c << '\n';
+// }
 
-  // std::cout << add(2, 3) << '\n';    // add(int, int) -- exact match
-  // std::cout << add(2, 3.5f) << '\n'; // add(int, float) -- exact match
-  // //==============
-  // std::cout << add(2.5, 3) << '\n';     // add(double, int) -- ???
-  // std::cout << add('h', false) << '\n'; // add(char, bool) -- ???
+//======== 26
+// // COMPILATION ERROR: These are considered identical signatures!
+// void func(int a, int b);     // Signature: func(int, int)
+// void func(int a, int b = 5); // Signature: func(int, int) - defaults ignored!
 
-  //======== 25
-  //==============
-
-  //======== 26
-  //==============
-
-  //======== 27
-  //==============
-  // int x{10};
-  // int y{20};
-  // int z{};
-  // z = g(x, y);
-  // std::cout << z << '\n';
-
-
-  //======== 28
-  //==============
-  // int n{};
-  // std::cout << "Enter a number: ";
-  // std::cin >> n;
-  // std::cout << "Factorial of " << n << " is " << factorial(n) << '\n';
+//======== 27
+void f(int &x, int y, int z)
+{
+    x += y + z;
 }
 
+int g(int a, int b)
+{
+    int result{};
+    result = a + b;
+    f(result, a, b);
+    return result;
+}
 
-//======== 29
-//==============
-// int main(int argc, char *argv[]) {
-//     std::cout << "Number of arguments: " << argc << '\n';
-//     for (int i{0}; i < argc; i++) {
-//         std::cout << "Argument " << i << ": " << argv[i] << '\n';
-//     }
+//======== 28
+// long long factorial(int n)
+// {
+//     if (n <= 1)
+//         return 1;                // Base case: 0! or 1! is 1
+//     return n * factorial(n - 1); // Recursive call
 // }
