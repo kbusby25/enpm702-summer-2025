@@ -8,7 +8,8 @@ The robot's behavior is primarily controlled by the robot_config.yaml file. This
 `robot_config.yaml`
 
 This is the master configuration file for the robot. It is structured into several key sections:
-    - `hardware`: Defines the core computing and sensor components, such as the CPU, memory, LiDAR, and camera models.
-    - `navigation`: Controls all movement-related parameters, including the navigation update rate, maximum speed, acceleration, and path-planning algorithms.
-    - `power_management`: Manages the robot's battery settings, including the low-power threshold and auto-recharge behavior.
-    <!-- - `gps`: Contains settings for the GPS module. This section can be enabled or disabled depending on the operational requirements. -->
+
+- `hardware`: Defines the core computing and sensor components, such as the CPU, memory, LiDAR, and camera models.
+- `navigation`: Controls all movement-related parameters, including the navigation update rate, maximum speed, acceleration, and path-planning algorithms.
+- `power_management`: Manages the robot's battery settings, including the low-power threshold and auto-recharge behavior.
+<!-- - `gps`: Contains settings for the GPS module. This section can be enabled or disabled depending on the operational requirements. -->

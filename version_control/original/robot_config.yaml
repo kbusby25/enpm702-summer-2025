@@ -30,7 +30,7 @@ hardware:
 navigation:
   # The frequency (in Hz) at which the navigation stack runs its main control loop.
   # A higher rate allows for faster reaction to environmental changes.
-  update_rate: 10 # Hz
+  update_rate: 5 # HZ
   # Top speed of the robot. Set to a safe speed for pedestrian environments.
   max_speed: 1.5   # meters/sec (approx. 3.35 mph)
   # Maximum acceleration to ensure smooth and stable movement.
@@ -64,16 +64,16 @@ power_management:
 #   # The geodetic datum to use for coordinate interpretation. WGS84 is the global standard.
 #   datum: "WGS84"
 
-  # Defines how the robot handles mission destinations based on GPS coordinates.
-  waypoints:
-    # The maximum number of destinations the robot can handle in a single mission.
-    max_waypoints: 50
-    # The acceptable margin of error (in meters) for arriving at a waypoint.
-    precision: 1.0  # meters
-    # If true, the robot will automatically return to its home base after completing all waypoints.
-    auto_return_home: true
-    # The geographic coordinates of the robot's home base or charging station.
-    # NOTE: Coordinates are for Damascus Centre, a central commercial location in Damascus, MD.
-    home_coordinates:
-      latitude: 39.2771
-      longitude: -77.2055
+  # # Defines how the robot handles mission destinations based on GPS coordinates.
+  # waypoints:
+  #   # The maximum number of destinations the robot can handle in a single mission.
+  #   max_waypoints: 50
+  #   # The acceptable margin of error (in meters) for arriving at a waypoint.
+  #   precision: 1.0  # meters
+  #   # If true, the robot will automatically return to its home base after completing all waypoints.
+  #   auto_return_home: true
+  #   # The geographic coordinates of the robot's home base or charging station.
+  #   # NOTE: Coordinates are for Damascus Centre, a central commercial location in Damascus, MD.
+  #   home_coordinates:
+  #     latitude: 39.2771
+  #     longitude: -77.2055
