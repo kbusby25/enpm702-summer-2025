@@ -66,14 +66,14 @@ int main() {
 
     // Test with empty vector
     const std::vector<double> empty_data{};
-    double min_empty{};  // NOT const - passed by ref to find_extremes
-    double max_empty{};  // NOT const - passed by ref to find_extremes
+    double min_empty{};  // NOT const - may be modified by find_extremes
+    double max_empty{};  // NOT const - may be modified by find_extremes
     const bool extremes_empty{find_extremes(empty_data, min_empty, max_empty)};
 
     // Test with non-empty vector (different initial values)
     const std::vector<double> sensor_data{-3.2, 7.8, -1.5, 9.4, 2.1};
-    double min_sensor{-3.0};   // NOT const - passed by ref to find_extremes
-    double max_sensor{-25.0};  // NOT const - passed by ref to find_extremes
+    double min_sensor{};  // NOT const - may be modified by find_extremes
+    double max_sensor{};  // NOT const - may be modified by find_extremes
     const bool extremes_sensor{find_extremes(sensor_data, min_sensor, max_sensor)};
 
     // Display status
