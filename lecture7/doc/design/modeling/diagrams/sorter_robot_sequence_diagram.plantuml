@@ -1,0 +1,94 @@
+@startuml SorterRobotSequence
+title SorterRobot Package Sorting Sequence
+
+participant "Management\nSystem" as sys
+participant SorterRobot as sorter
+participant Item as item
+participant Position as pos
+participant "Processing\nQueue" as queue
+
+== Task Initiation ==
+sys -> sorter : execute_task()
+activate sorter
+sorter -> queue : initialize_processing_queue()
+activate queue
+queue --> sorter : queue_ready
+deactivate queue
+
+== Item Processing Loop ==
+loop while items available
+    == Item Retrieval ==
+    sorter -> queue : get_next_item()
+    activate queue
+    queue --> sorter : item_to_sort
+    deactivate queue
+    
+    alt item available
+        == Item Analysis ==
+        sorter -> sorter : analyze_item_properties()
+        sorter -> item : get_weight()
+        activate item
+        item --> sorter : weight
+        deactivate item
+        
+        sorter -> item : get_category()
+        activate item
+        item --> sorter : current_category
+        deactivate item
+        
+        sorter -> item : get_additional_properties()
+        activate item
+        item --> sorter : size, destination, priority
+        deactivate item
+        
+        == Categorization ==
+        sorter -> sorter : categorize_item(item_properties)
+        sorter -> sorter : apply_sorting_rules(item)
+        sorter -> sorter : determine_target_zone(category)
+        
+        == Transportation to Zone ==
+        sorter -> sorter : navigate_to_current_item()
+        sorter -> sorter : pick_up_item(item)
+        
+        sorter -> sorter : move_to_zone(target_zone)
+        loop during navigation
+            sorter -> pos : update_coordinates()
+            activate pos
+            pos --> sorter : current_position
+            deactivate pos
+        end
+        
+        == Item Placement ==
+        sorter -> sorter : place_item_in_zone()
+        sorter -> item : set_location(target_zone)
+        activate item
+        item --> sorter : location_updated
+        deactivate item
+        
+        == Performance Tracking ==
+        sorter -> sorter : update_sort_statistics()
+        sorter -> sorter : record_sorting_time()
+        
+    else no items available
+        sorter -> sorter : break_processing_loop()
+    end
+end
+
+== Final Processing ==
+sorter -> sorter : process_remaining_queue()
+sorter -> sorter : validate_all_items_sorted()
+
+== Statistics and Reporting ==
+sorter -> sorter : calculate_sorting_efficiency()
+sorter -> sorter : generate_performance_report()
+
+== Task Completion ==
+sorter -> queue : clear_processing_queue()
+activate queue
+queue --> sorter : queue_cleared
+deactivate queue
+
+sorter --> sys : sorting_completed(performance_report)
+deactivate sorter
+
+@enduml

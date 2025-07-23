@@ -1,0 +1,53 @@
+@startuml BatteryManagementSequence
+title Battery Management Sequence Diagram
+
+participant Robot as robot
+participant Battery as bat
+participant "Management\nSystem" as sys
+
+== Continuous Monitoring ==
+loop during robot operation
+    robot -> bat : get_charge_level()
+    activate bat
+    bat --> robot : current_charge_level
+    deactivate bat
+    
+    robot -> bat : is_low_battery()
+    activate bat
+    bat --> robot : battery_status
+    deactivate bat
+    
+    alt if battery is low
+        robot -> sys : low_battery_alert()
+        activate sys
+        robot -> robot : complete_current_task()
+        robot -> robot : set_status(CHARGING)
+        
+        == Charging Station Coordination ==
+        sys -> sys : find_available_charging_station()
+        sys --> robot : charging_station_location
+        
+        robot -> robot : navigate_to_charging_station()
+        
+        == Charging Process ==
+        robot -> bat : charge()
+        activate bat
+        bat -> bat : update_status(CHARGING)
+        
+        loop while charging
+            sys -> bat : get_remaining_time()
+            bat --> sys : estimated_time
+            sys -> sys : update_charging_schedule()
+        end
+        
+        bat -> bat : update_status(FULL)
+        bat --> robot : charging_complete
+        deactivate bat
+        
+        robot -> robot : set_status(IDLE)
+        robot -> sys : available_for_tasks()
+        deactivate sys
+    end
+end
+
+@enduml

@@ -1,0 +1,204 @@
+@startuml WarehouseRobotClassDiagram
+!theme plain
+skinparam classAttributeIconSize 0
+title Warehouse Robot Management System - Class Diagram
+
+' Core Abstract Base Class
+abstract class Robot {
+    # robot_id_: String
+    # model_: String
+    # operational_status_: RobotStatus
+    + move(): void
+    + {abstract} execute_task(): void
+    + {abstract} get_task_description(): String
+    + get_status(): RobotStatus
+    + assign_operator(op: Operator): void
+    + assign_battery(bat: Battery): void
+    + update_position(pos: Position): void
+    # validate_operation(): Boolean
+    # log_activity(message: String): void
+}
+
+class Battery {
+    - capacity_: Real
+    - charge_level_: Real
+    - charging_status_: ChargingStatus
+    - battery_id_: String
+    + charge(): void
+    + discharge(amount: Real): void
+    + get_charge_level(): Real
+    + get_remaining_time(): Real
+    + is_low_battery(): Boolean
+    - update_status(): void
+}
+
+class Operator {
+    - name_: String
+    - operator_id_: String
+    - active_session_: Boolean
+    + login(): Boolean
+    + logout(): void
+    + assign_task(task: Task): void
+    + monitor_robots(): void
+    + emergency_stop(): void
+    - validate_credentials(): Boolean
+}
+
+' Specialized Robot Classes with Polymorphic Methods
+class CarrierRobot {
+    - load_capacity_: Real
+    - current_load_: Real
+    - cargo_manifest_: List<Item>
+    + load_item(item: Item): Boolean
+    + unload_item(item: Item): Boolean
+    + calculate_route(dest: Position): List<Position>
+    + check_weight_limits(): Boolean
+    + {override} execute_task(): void
+    + {override} get_task_description(): String
+    - optimize_load_distribution(): void
+}
+
+class ScannerRobot {
+    - scanner_range_: Real
+    - scan_accuracy_: Real
+    - inventory_buffer_: List<Item>
+    + scan_barcode(barcode: String): Item
+    + update_inventory(item: Item): void
+    + validate_scan(item: Item): Boolean
+    + sync_database(): void
+    + {override} execute_task(): void
+    + {override} get_task_description(): String
+    - calibrate_scanner(): void
+}
+
+class SorterRobot {
+    - sort_accuracy_: Real
+    - processing_queue_: Queue<Item>
+    + categorize_item(item: Item): String
+    + apply_sorting_rules(item: Item): void
+    + move_to_zone(zone: String): void
+    + update_sort_statistics(): void
+    + {override} execute_task(): void
+    + {override} get_task_description(): String
+    - analyze_item_properties(): void
+}
+
+' Supporting Classes
+class Position {
+    - x_: Real
+    - y_: Real
+    - zone_: String
+    - timestamp_: String
+    + calculate_distance(other: Position): Real
+    + is_valid_position(): Boolean
+    + update_coordinates(x: Real, y: Real): void
+}
+
+class Task {
+    - task_id_: String
+    - task_type_: TaskType
+    - priority_: Priority
+    - status_: TaskStatus
+    + assign_to_robot(robot: Robot): void
+    + update_status(status: TaskStatus): void
+    + calculate_completion_time(): Real
+}
+
+class Item {
+    - item_id_: String
+    - weight_: Real
+    - category_: String
+    - location_: String
+    + get_weight(): Real
+    + get_category(): String
+    + set_location(loc: String): void
+}
+
+' New InventoryDatabase Class
+class InventoryDatabase {
+    - database_connection_: String
+    - inventory_records_: Map<String, Item>
+    - last_sync_time_: String
+    + sync_database(updates: List<Item>): Boolean
+    + validate_inventory_changes(): Boolean
+    + update_inventory_records(items: List<Item>): void
+    + get_item_info(item_id: String): Item
+    + process_inventory_changes(): void
+    - establish_connection(): Boolean
+    - log_database_operation(operation: String): void
+}
+
+' Enumerations
+enum RobotStatus {
+    IDLE
+    ACTIVE
+    CHARGING
+    MAINTENANCE
+    ERROR
+}
+
+enum ChargingStatus {
+    CHARGING
+    FULL
+    DISCHARGING
+    CRITICAL
+}
+
+enum TaskType {
+    TRANSPORT
+    SCAN
+    SORT
+    MAINTENANCE
+}
+
+enum Priority {
+    LOW
+    NORMAL
+    HIGH
+    URGENT
+}
+
+enum TaskStatus {
+    CREATED
+    ASSIGNED
+    IN_PROGRESS
+    COMPLETED
+    FAILED
+}
+
+' ==========================================
+' INHERITANCE RELATIONSHIPS (IS-A) - POLYMORPHISM
+' ==========================================
+Robot <|-- CarrierRobot : <<inheritance>>\nIS-A\nOverrides: execute_task()\nget_task_description()
+Robot <|-- ScannerRobot : <<inheritance>>\nIS-A\nOverrides: execute_task()\nget_task_description()
+Robot <|-- SorterRobot : <<inheritance>>\nIS-A\nOverrides: execute_task()\nget_task_description()
+
+' ==========================================
+' COMPOSITION RELATIONSHIPS (PART-OF)
+' Strong ownership - child cannot exist without parent
+' ==========================================
+Robot *-- Battery : <<composition>>\n1:1\nowns
+Robot *-- Position : <<composition>>\n1:1\nhas
+
+' ==========================================
+' AGGREGATION RELATIONSHIPS (HAS-A)
+' Weak ownership - child can exist independently
+' ==========================================
+Operator o-- Robot : <<aggregation>>\n1:*\nmanages
+Robot o-- Task : <<aggregation>>\n1:1\nassigned
+
+' ==========================================
+' ASSOCIATION RELATIONSHIPS
+' ==========================================
+Robot --> RobotStatus : uses
+Battery --> ChargingStatus : uses
+Task --> TaskType : uses
+Task --> Priority : uses
+Task --> TaskStatus : uses
+CarrierRobot --> Item : transports
+ScannerRobot --> Item : scans
+SorterRobot --> Item : sorts
+ScannerRobot --> InventoryDatabase : updates
+InventoryDatabase --> Item : stores
+
+@enduml

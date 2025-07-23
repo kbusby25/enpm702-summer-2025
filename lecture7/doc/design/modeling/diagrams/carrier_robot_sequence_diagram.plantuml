@@ -1,0 +1,83 @@
+@startuml CarrierRobotSequence
+title CarrierRobot Transportation Sequence
+
+participant "Management\nSystem" as sys
+participant CarrierRobot as carrier
+participant Position as pos
+participant Item as item
+participant Task as task
+
+== Task Initiation ==
+sys -> carrier : execute_task()
+activate carrier
+carrier -> task : get_task_details()
+activate task
+task --> carrier : pickup_location, destination, items
+deactivate task
+
+== Route Planning ==
+carrier -> carrier : calculate_route(destination)
+carrier -> pos : calculate_distance(pickup_location)
+activate pos
+pos --> carrier : distance_to_pickup
+deactivate pos
+
+== Navigation to Pickup ==
+carrier -> carrier : navigate_to_pickup()
+loop during navigation
+    carrier -> pos : update_coordinates()
+    activate pos
+    pos --> carrier : current_position
+    deactivate pos
+end
+
+== Loading Phase ==
+carrier -> carrier : check_weight_limits()
+loop for each item to load
+    carrier -> item : get_weight()
+    activate item
+    item --> carrier : item_weight
+    deactivate item
+    
+    alt weight within limits
+        carrier -> carrier : load_item(item)
+        carrier -> carrier : update_cargo_manifest()
+    else weight exceeds capacity
+        carrier -> sys : report_overweight_error()
+        carrier -> carrier : skip_item(item)
+    end
+end
+
+carrier -> carrier : optimize_load_distribution()
+
+== Transportation ==
+carrier -> carrier : navigate_to_destination()
+loop during navigation
+    carrier -> pos : update_coordinates()
+    activate pos
+    pos --> carrier : current_position
+    deactivate pos
+    
+    carrier -> carrier : monitor_cargo_stability()
+end
+
+== Unloading Phase ==
+loop for each item to unload
+    carrier -> carrier : unload_item(item)
+    carrier -> item : set_location(destination)
+    activate item
+    item --> carrier : location_updated
+    deactivate item
+    carrier -> carrier : update_cargo_manifest()
+end
+
+== Task Completion ==
+carrier -> carrier : verify_delivery_complete()
+carrier -> task : update_status(COMPLETED)
+activate task
+task --> carrier : status_updated
+deactivate task
+carrier --> sys : transportation_completed
+deactivate carrier
+
+@enduml

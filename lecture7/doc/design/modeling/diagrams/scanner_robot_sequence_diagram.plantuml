@@ -1,0 +1,76 @@
+@startuml ScannerRobotSequence
+title ScannerRobot Inventory Scanning Sequence
+
+participant "Management\nSystem" as sys
+participant ScannerRobot as scanner
+participant Position as pos
+participant Item as item
+participant "Inventory\nDatabase" as db
+
+== Task Initiation ==
+sys -> scanner : execute_task()
+activate scanner
+scanner -> scanner : get_scanning_zone()
+
+== Navigation to Zone ==
+scanner -> scanner : navigate_to_scanning_zone()
+loop during navigation
+    scanner -> pos : update_coordinates()
+    activate pos
+    pos --> scanner : current_position
+    deactivate pos
+end
+
+== Scanner Calibration ==
+scanner -> scanner : calibrate_scanner()
+scanner -> scanner : set_scan_accuracy_threshold()
+
+== Scanning Process ==
+loop for each item in zone
+    scanner -> scanner : scan_barcode(item)
+    
+    alt successful scan
+        scanner -> scanner : validate_scan(scanned_data)
+        
+        alt scan is valid
+            scanner -> item : get_current_info()
+            activate item
+            item --> scanner : current_item_data
+            deactivate item
+            
+            scanner -> scanner : compare_scan_with_database()
+            scanner -> scanner : add_to_inventory_buffer(item)
+            
+        else scan is invalid
+            scanner -> scanner : increment_error_count()
+            scanner -> scanner : retry_scan(item)
+        end
+        
+    else scan failed
+        scanner -> scanner : log_scan_error(item)
+        scanner -> scanner : mark_item_for_manual_review()
+    end
+end
+
+== Inventory Processing ==
+scanner -> scanner : process_inventory_buffer()
+scanner -> scanner : update_inventory(scanned_items)
+
+== Database Synchronization ==
+scanner -> db : sync_database(inventory_updates)
+activate db
+db -> db : validate_inventory_changes()
+db -> db : update_inventory_records()
+db --> scanner : sync_confirmation
+deactivate db
+
+== Accuracy Reporting ==
+scanner -> scanner : calculate_scan_accuracy()
+scanner -> scanner : generate_scan_report()
+
+== Task Completion ==
+scanner -> scanner : cleanup_scanning_resources()
+scanner --> sys : scanning_completed(accuracy_report)
+deactivate scanner
+
+@enduml
