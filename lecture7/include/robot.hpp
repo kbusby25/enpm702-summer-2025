@@ -13,6 +13,7 @@
 
 #include "support.hpp"
 
+namespace robotics {
 // Forward declarations for classes that will be implemented later
 // class Operator;
 // class Battery;
@@ -61,7 +62,7 @@ class Robot {
      *
      * @see RobotStatus
      */
-    RobotStatus operational_status_;
+    robotics::RobotStatus operational_status_;
 
     // ==========================================
     // CONSTRUCTORS AND DESTRUCTOR
@@ -79,7 +80,7 @@ class Robot {
      * @post Robot is created with IDLE status
      * @post Creation is logged to the activity log
      */
-    Robot(const std::string& robot_id, const std::string& model);
+    // Robot(const std::string& robot_id, const std::string& model);
 
     /**
      * @brief Virtual destructor for proper cleanup
@@ -112,7 +113,7 @@ class Robot {
      *
      * @see RobotStatus
      */
-    RobotStatus get_status() const;
+    robotics::RobotStatus get_status() const;
 
     /**
      * @brief Updates the robot's position coordinates
@@ -205,4 +206,5 @@ class Robot {
      * @post Message is output to console with [ROBOT LOG] prefix
      */
     void log_activity(const std::string& message);
-}; // class Robot
+};  // class Robot
+}  // namespace robotics

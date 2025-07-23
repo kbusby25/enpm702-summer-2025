@@ -8,6 +8,7 @@
  * @date 2025-07-23
  */
 
+namespace robotics {
 /**
  * @enum RobotStatus
  * @brief Enumeration representing the operational status of warehouse robots
@@ -69,3 +70,4 @@ enum class RobotStatus {
      */
     ERROR
 };  // class RobotStatus
+}  // namespace robotics
