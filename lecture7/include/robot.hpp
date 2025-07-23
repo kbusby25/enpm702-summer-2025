@@ -83,12 +83,32 @@ class Robot {
     // Robot(const std::string& robot_id, const std::string& model);
 
     /**
+     * @brief Constructor for Robot class
+     *
+     * Initializes a new robot instance
+     */
+    // Robot();
+
+    /**
+     * @brief Constructor for Robot class
+     *
+     * Initializes a new robot instance with the specified ID and model.
+     * The robot starts in IDLE status and logs its creation.
+     *
+     * @param robot_id Unique identifier for the robot
+     * @param model Model designation of the robot
+     *
+     * @post Robot is created with IDLE status
+     */
+    // Robot(const std::string& robot_id, const std::string& model);
+
+    /**
      * @brief Virtual destructor for proper cleanup
      *
      * Ensures proper cleanup when robot objects are destroyed,
      * especially important for future inheritance scenarios.
      */
-    virtual ~Robot() = default;
+    // virtual ~Robot() = default;
 
     // ==========================================
     // CORE ROBOT OPERATIONS
@@ -114,6 +134,43 @@ class Robot {
      * @see RobotStatus
      */
     robotics::RobotStatus get_status() const;
+
+    /**
+     * @brief Gets the model designation of the robot
+     *
+     * Retrieves the model string that identifies the type and specifications
+     * of this robot instance. The model designation is typically set during
+     * robot construction and remains constant throughout the robot's lifecycle.
+     *
+     * @return String containing the robot's model designation
+     *
+     * @note This method should be marked as const since it doesn't modify
+     *       the robot's state - only reads the model information
+     *
+     * @see Robot::Robot(const std::string&, const std::string&)
+     * @see model_
+     */
+    std::string get_model();
+
+    /**
+     * @brief Sets the model designation of the robot
+     *
+     * Updates the robot's model designation string that identifies the type
+     * and specifications of this robot instance. This method allows changing
+     * the model after robot construction, which may be useful for upgrades
+     * or reconfiguration scenarios.
+     *
+     * @param model New model designation to assign to the robot
+     *
+     * @post Robot's model designation is updated to the specified value
+     * @post Model change is logged to the activity log
+     *
+     * @note This is a non-const method as it modifies the robot's state
+     *
+     * @see Robot::get_model()
+     * @see model_
+     */
+    void set_model(const std::string& model);
 
     /**
      * @brief Updates the robot's position coordinates

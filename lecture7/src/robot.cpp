@@ -4,8 +4,20 @@
 
 // Robot class implementation
 // robotics::Robot::Robot(const std::string& robot_id, const std::string& model)
-//     : robot_id_(robot_id), model_(model), operational_status_(robotics::RobotStatus::IDLE) {
+//     : robot_id_{robot_id}, model_{model}, operational_status_{robotics::RobotStatus::IDLE} {
 //     log_activity("Robot created with ID: " + robot_id_ + ", Model: " + model_);
+// }
+
+// robotics::Robot::Robot() {
+//     robot_id_ = "X123";
+//     model_ = "UR5e";
+//     operational_status_ = robotics::RobotStatus::IDLE;
+// }
+
+// robotics::Robot::Robot(const std::string& robot_id, const std::string& model) {
+//     robot_id_ = robot_id;
+//     model_ = model;
+//     operational_status_ = robotics::RobotStatus::IDLE;
 // }
 
 
@@ -19,7 +31,16 @@ void robotics::Robot::move() {
 }
 
 robotics::RobotStatus robotics::Robot::get_status() const {
+    // operational_status_ = robotics::RobotStatus::ACTIVE;  // This should be prevented
     return operational_status_;
+}
+
+std::string robotics::Robot::get_model() {
+    return model_;
+}
+
+void robotics::Robot::set_model(const std::string& model) {
+    model_ = model;
 }
 
 void robotics::Robot::update_position(/* const Position& pos */) {
