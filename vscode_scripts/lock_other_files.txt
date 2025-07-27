@@ -1,0 +1,11 @@
+{
+    "files.readonlyInclude": {
+        "lecture1/**": true,
+        "lecture2/**": true,
+        "lecture3/**": true,
+        "lecture4/**": true,
+        "lecture5/**": true,
+        "lecture6/**": true,
+        "lecture7/**": true,
+    }
+}
