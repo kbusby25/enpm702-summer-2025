@@ -2,7 +2,7 @@
  * @file string_view_demo.cpp
  * @author Zeid Kootbally (zeidk@umd.edu)
  * @brief Demonstration of std::string_view
- * @version 0.1
+ * @version 1.0
  * @date 2025-07-27
  * 
  * @copyright Copyright (c) 2025
