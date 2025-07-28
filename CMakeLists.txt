@@ -17,6 +17,8 @@ include_directories(lecture8/include)
 add_executable(lecture8_cpp lecture8/src/main.cpp lecture8/src/robot.cpp)
 add_executable(string_view_demo lecture8/src/string_view_demo.cpp)
 add_executable(explicit_demo lecture8/src/explicit_demo.cpp)
+add_executable(nodiscard_demo lecture8/src/nodiscard_demo.cpp)
+add_executable(optional_demo lecture8/src/optional_demo.cpp)
 
 # Set C++17 standard for the target
 # set_property(TARGET lecture1_cpp PROPERTY CXX_STANDARD 17)
@@ -39,6 +41,10 @@ set_property(TARGET string_view_demo PROPERTY CXX_STANDARD 17)
 set_property(TARGET string_view_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 set_property(TARGET explicit_demo PROPERTY CXX_STANDARD 17)
 set_property(TARGET explicit_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET nodiscard_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET nodiscard_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET optional_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET optional_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
 # # Add Valgrind target for lecture6_cpp
 # find_program(VALGRIND_EXECUTABLE valgrind)
