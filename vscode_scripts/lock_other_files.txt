@@ -7,5 +7,9 @@
         "lecture5/**": true,
         "lecture6/**": true,
         "lecture7/**": true,
+        "rm/**": true,
+        "rwa2_enpm702_summer_2025/**": true,
+        "rwa3_enpm702_summer_2025/**": true,
+        "version_control/**": true,
     }
 }
