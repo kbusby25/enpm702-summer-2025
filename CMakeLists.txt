@@ -5,7 +5,7 @@ add_compile_options(-Wall -pedantic-errors)
 # include_directories(lecture5/include)
 # include_directories(lecture6/include)
 # include_directories(lecture7/include)
-include_directories(lecture8/include)
+
 # add_executable(lecture1_cpp lecture1/src/lecture1.cpp)
 # add_executable(lecture2_cpp lecture2/src/lecture2.cpp)
 # add_executable(lecture3_cpp lecture3/src/lecture3.cpp)
@@ -14,9 +14,27 @@ include_directories(lecture8/include)
 # add_executable(lecture6_cpp lecture6/src/lecture6.cpp lecture6/src/utils.cpp)
 # add_executable(lecture7_cpp lecture7/src/main.cpp lecture7/src/robot.cpp)
 
+# Set C++17 standard for the target
+# set_property(TARGET lecture1_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture1_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+# set_property(TARGET lecture2_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture2_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+# set_property(TARGET lecture3_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture3_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+# set_property(TARGET lecture4_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture4_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+# set_property(TARGET lecture5_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture5_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+# set_property(TARGET lecture6_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture6_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+# set_property(TARGET lecture7_cpp PROPERTY CXX_STANDARD 17)
+# set_property(TARGET lecture7_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
+
+
 # ========================
 # Lecture 8 executables
 # ========================
+include_directories(lecture8/include)
 
 # -- string_view
 add_executable(string_view_demo lecture8/src/modern_features/string_view_demo.cpp)
@@ -86,26 +104,6 @@ lecture8/src/warehouse_robotics/task.cpp)
 set_property(TARGET robot_polymorphism_demo PROPERTY CXX_STANDARD 17)
 set_property(TARGET robot_polymorphism_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-
-# Set C++17 standard for the target
-# set_property(TARGET lecture1_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture1_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-# set_property(TARGET lecture2_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture2_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-# set_property(TARGET lecture3_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture3_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-# set_property(TARGET lecture4_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture4_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-# set_property(TARGET lecture5_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture5_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-# set_property(TARGET lecture6_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture6_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-# set_property(TARGET lecture7_cpp PROPERTY CXX_STANDARD 17)
-# set_property(TARGET lecture7_cpp PROPERTY CXX_STANDARD_REQUIRED ON)
-
-# Lecture 8 executables
-# set_property(TARGET robot_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET robot_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
 
 
