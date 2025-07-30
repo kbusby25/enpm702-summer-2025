@@ -32,7 +32,7 @@ namespace robotics {
  * @see RobotStatus
  */
 class Robot {
-   public:
+   private:
     // ==========================================
     // PUBLIC MEMBER VARIABLES
     // ==========================================
@@ -62,12 +62,13 @@ class Robot {
      *
      * @see RobotStatus
      */
-    robotics::RobotStatus operational_status_;
+    robotics::RobotStatus operational_status_ = robotics::RobotStatus::IDLE;
+
 
     // ==========================================
     // CONSTRUCTORS AND DESTRUCTOR
     // ==========================================
-
+    public:
     /**
      * @brief Constructor for Robot class
      *
@@ -100,7 +101,7 @@ class Robot {
      *
      * @post Robot is created with IDLE status
      */
-    // Robot(const std::string& robot_id, const std::string& model);
+    Robot(const std::string& robot_id, const std::string& model);
 
     /**
      * @brief Virtual destructor for proper cleanup
@@ -239,7 +240,7 @@ class Robot {
     // ==========================================
     // UTILITY METHODS
     // ==========================================
-
+    private:
     /**
      * @brief Validates whether the robot can perform operations
      *

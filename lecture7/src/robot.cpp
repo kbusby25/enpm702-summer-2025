@@ -14,11 +14,10 @@
 //     operational_status_ = robotics::RobotStatus::IDLE;
 // }
 
-// robotics::Robot::Robot(const std::string& robot_id, const std::string& model) {
-//     robot_id_ = robot_id;
-//     model_ = model;
-//     operational_status_ = robotics::RobotStatus::IDLE;
-// }
+robotics::Robot::Robot(const std::string& robot_id, const std::string& model) {
+    robot_id_ = robot_id;
+    model_ = model;
+}
 
 
 void robotics::Robot::move() {
