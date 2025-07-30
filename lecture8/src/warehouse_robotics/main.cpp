@@ -1,9 +1,9 @@
 #include <iostream>
 #include <memory>
 
-// //=================
-// // Composition
-// //=================
+//=================
+// Composition
+//=================
 #include "warehouse_robotics/robot.hpp"
 
 int main() {
@@ -114,6 +114,10 @@ int main() {
 //   command_robot(std::move(scanner_pointer));
 // }
 
+
+//=================
+// Polymorphism </20>
+//=================
 // void command_robot(robotics::Robot &robot) { robot.execute_task(); }
 // void command_robot(std::unique_ptr<robotics::Robot> robot) {
 //   robot->execute_task();

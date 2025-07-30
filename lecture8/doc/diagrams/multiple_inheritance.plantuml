@@ -1,0 +1,31 @@
+@startuml BaseDeriviedClassDiagram
+!theme plain
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam classBackgroundColor white
+skinparam classBorderColor black
+skinparam arrowColor black
+
+class Animal {
+    # has_tail_: Boolean
+    # has_wings_: Boolean
+    # has_horns_: Boolean
+    + can_fly(): Boolean
+}
+
+class Human {
+    # is_bipedal_: Boolean
+    + speak(): void
+}
+
+class MythicalCreature {
+    -powers_: List[String]
+    + use_power(power: String): void
+}
+
+Animal <|-- MythicalCreature : + public
+Human <|-- MythicalCreature : + public
+
+
+@enduml
