@@ -1,3 +1,14 @@
+/**
+ * @file optional_demo.cpp
+ * @author Zeid Kootbally (zeidk@umd.edu)
+ * @brief Demonstration of [[nodiscard]] usage
+ * @version 0.1
+ * @date 2025-07-29
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include <iostream>
 #include <string>
 

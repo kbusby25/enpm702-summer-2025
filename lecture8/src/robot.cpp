@@ -53,7 +53,7 @@ void robotics::Robot::move() {
     robotics::RobotStatus previous_status = operational_status_;
     operational_status_ = robotics::RobotStatus::ACTIVE;
 
-    log_activity("Robot " + robot_id_ + " started movement (status changed from " + status_to_string(previous_status) + " to " + status_to_string(operational_status_) + ")");
+    // log_activity("Robot " + robot_id_ + " started movement (status changed from " + status_to_string(previous_status) + " to " + status_to_string(operational_status_) + ")");
 }
 
 void robotics::Robot::update_position(/* const Position& pos */) {
@@ -82,7 +82,7 @@ void robotics::Robot::execute_task() {
     robotics::RobotStatus previous_status = operational_status_;
     operational_status_ = robotics::RobotStatus::ACTIVE;
 
-    log_activity("Robot " + robot_id_ + " started task execution (status changed from " + status_to_string(previous_status) + " to " + status_to_string(operational_status_) + ")");
+    log_activity("*** Robot " + robot_id_ + " started task execution (status changed from " + status_to_string(previous_status) + " to " + status_to_string(operational_status_) + ")");
 
     // Base implementation - derived classes should override for specific behavior
     log_activity("Executing generic robot task for " + robot_id_);
