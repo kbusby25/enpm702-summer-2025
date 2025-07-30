@@ -8,6 +8,7 @@ abstract class Robot {
     # robot_id_: String
     # model_: String
     # operational_status_: RobotStatus
+    - battery_: Battery
     + move(): void
     + {abstract} execute_task(): void
     + {abstract} get_task_description(): String
