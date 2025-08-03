@@ -34,75 +34,75 @@ add_compile_options(-Wall -pedantic-errors)
 # ========================
 # Lecture 8 executables
 # ========================
-# include_directories(lecture8/include)
+include_directories(lecture8/include)
 
-# # -- string_view
-# add_executable(string_view_demo lecture8/src/modern_features/string_view_demo.cpp)
-# set_property(TARGET string_view_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET string_view_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- string_view
+add_executable(string_view_demo lecture8/src/modern_features/string_view_demo.cpp)
+set_property(TARGET string_view_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET string_view_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- explicit
-# add_executable(explicit_demo lecture8/src/modern_features/explicit_demo.cpp)
-# set_property(TARGET explicit_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET explicit_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- explicit
+add_executable(explicit_demo lecture8/src/modern_features/explicit_demo.cpp)
+set_property(TARGET explicit_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET explicit_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- [[nodiscard]]
-# add_executable(nodiscard_demo lecture8/src/modern_features/nodiscard_demo.cpp)
-# set_property(TARGET nodiscard_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET nodiscard_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- [[nodiscard]]
+add_executable(nodiscard_demo lecture8/src/modern_features/nodiscard_demo.cpp)
+set_property(TARGET nodiscard_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET nodiscard_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- std::optional
-# add_executable(optional_demo lecture8/src/modern_features/optional_demo.cpp)
-# set_property(TARGET optional_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET optional_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- std::optional
+add_executable(optional_demo lecture8/src/modern_features/optional_demo.cpp)
+set_property(TARGET optional_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET optional_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- static
-# add_executable(static_demo lecture8/src/modern_features/static_demo.cpp lecture8/src/modern_features/counter.cpp)
-# set_property(TARGET static_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET static_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- static
+add_executable(static_demo lecture8/src/modern_features/static_demo.cpp lecture8/src/modern_features/counter.cpp)
+set_property(TARGET static_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET static_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- The this pointer
-# add_executable(this_pointer_demo lecture8/src/modern_features/this_pointer_demo.cpp)
-# set_property(TARGET this_pointer_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET this_pointer_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- The this pointer
+add_executable(this_pointer_demo lecture8/src/modern_features/this_pointer_demo.cpp)
+set_property(TARGET this_pointer_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET this_pointer_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- Inheritance
-# add_executable(inheritance_demo lecture8/src/inheritance/inheritance_demo.cpp)
-# set_property(TARGET inheritance_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET inheritance_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- Inheritance
+add_executable(inheritance_demo lecture8/src/inheritance/inheritance_demo.cpp)
+set_property(TARGET inheritance_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET inheritance_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- Inheritance Constructor
-# add_executable(inheritance_constructor_demo lecture8/src/inheritance/inheritance_constructor_demo.cpp)
-# set_property(TARGET inheritance_constructor_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET inheritance_constructor_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- Inheritance Constructor
+add_executable(inheritance_constructor_demo lecture8/src/inheritance/inheritance_constructor_demo.cpp)
+set_property(TARGET inheritance_constructor_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET inheritance_constructor_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- Polymorphism 
-# add_executable(polymorphism_demo lecture8/src/polymorphism/polymorphism_demo.cpp)
-# set_property(TARGET polymorphism_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET polymorphism_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- Polymorphism 
+add_executable(polymorphism_demo lecture8/src/polymorphism/polymorphism_demo.cpp)
+set_property(TARGET polymorphism_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET polymorphism_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- Robotics: Composition and Aggregation
-# add_executable(robot_composition_aggregation_demo 
-# lecture8/src/warehouse_robotics/main.cpp 
-# lecture8/src/warehouse_robotics/robot.cpp 
-# lecture8/src/warehouse_robotics/task.cpp
-# lecture8/src/warehouse_robotics/battery.cpp
-# )
-# set_property(TARGET robot_composition_aggregation_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET robot_composition_aggregation_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+# -- Robotics: Composition and Aggregation
+add_executable(robot_composition_aggregation_demo 
+lecture8/src/warehouse_robotics/main.cpp 
+lecture8/src/warehouse_robotics/robot.cpp 
+lecture8/src/warehouse_robotics/task.cpp
+lecture8/src/warehouse_robotics/battery.cpp
+)
+set_property(TARGET robot_composition_aggregation_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET robot_composition_aggregation_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
-# # -- Robotics: Inheritance and polymorphism
-# add_executable(robot_polymorphism_demo 
-# lecture8/src/warehouse_robotics/main.cpp 
-# lecture8/src/warehouse_robotics/robot.cpp 
-# lecture8/src/warehouse_robotics/carrier_robot.cpp 
-# lecture8/src/warehouse_robotics/sorter_robot.cpp 
-# lecture8/src/warehouse_robotics/scanner_robot.cpp 
-# lecture8/src/warehouse_robotics/battery.cpp 
-# lecture8/src/warehouse_robotics/task.cpp)
+# -- Robotics: Inheritance and polymorphism
+add_executable(robot_polymorphism_demo 
+lecture8/src/warehouse_robotics/main.cpp 
+lecture8/src/warehouse_robotics/robot.cpp 
+lecture8/src/warehouse_robotics/carrier_robot.cpp 
+lecture8/src/warehouse_robotics/sorter_robot.cpp 
+lecture8/src/warehouse_robotics/scanner_robot.cpp 
+lecture8/src/warehouse_robotics/battery.cpp 
+lecture8/src/warehouse_robotics/task.cpp)
 
-# set_property(TARGET robot_polymorphism_demo PROPERTY CXX_STANDARD 17)
-# set_property(TARGET robot_polymorphism_demo PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET robot_polymorphism_demo PROPERTY CXX_STANDARD 17)
+set_property(TARGET robot_polymorphism_demo PROPERTY CXX_STANDARD_REQUIRED ON)
 
 # ========================
 # Assignment #4

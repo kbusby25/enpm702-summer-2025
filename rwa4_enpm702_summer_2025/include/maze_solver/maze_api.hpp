@@ -5,9 +5,9 @@ namespace maze {
 
 /**
  * @brief API for controlling and interacting with a maze environment
- * 
- * This class provides methods to navigate through a maze, query maze properties,
- * manipulate walls, set colors and text, and handle reset events.
+ *
+ * This class provides methods to navigate through a maze, query maze
+ * properties, manipulate walls, set colors and text, and handle reset events.
  */
 class MazeControlAPI {
 private:
@@ -65,7 +65,8 @@ public:
    * @brief Set a wall at the specified position and direction
    * @param x X coordinate of the cell
    * @param y Y coordinate of the cell
-   * @param direction Direction of the wall ('n', 's', 'e', 'w' for north, south, east, west)
+   * @param direction Direction of the wall ('n', 's', 'e', 'w' for north,
+   * south, east, west)
    */
   void set_wall(int x, int y, char direction);
 
@@ -73,7 +74,8 @@ public:
    * @brief Clear a wall at the specified position and direction
    * @param x X coordinate of the cell
    * @param y Y coordinate of the cell
-   * @param direction Direction of the wall ('n', 's', 'e', 'w' for north, south, east, west)
+   * @param direction Direction of the wall ('n', 's', 'e', 'w' for north,
+   * south, east, west)
    */
   void clear_wall(int x, int y, char direction);
 
@@ -127,6 +129,14 @@ public:
    * @brief Acknowledge that the reset has been handled
    */
   void ack_reset();
+
+  /**
+   * @brief Print a message in the simulator
+   * To print anything in the simulator, use std::cerr
+   * @param text
+   */
+  static void log(std::string_view text);
+
 }; // class MazeControlAPI
 
 } // namespace maze

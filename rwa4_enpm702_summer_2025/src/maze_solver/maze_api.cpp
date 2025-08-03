@@ -109,3 +109,5 @@ void maze::MazeControlAPI::ack_reset() {
     std::string ack;
     std::cin >> ack;
 }
+
+void maze::MazeControlAPI::log(std::string_view text) { std::cerr << text << '\n'; }
