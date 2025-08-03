@@ -61,7 +61,7 @@ PROJECT_BRIEF          = "Refactored API to interface with a simulator"
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           =
+PROJECT_LOGO           = /home/zeidk/Desktop/maze.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -1407,7 +1407,9 @@ HTML_EXTRA_STYLESHEET  =
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = maze_simulator_build2.png maze_simulator_build1.png build_cmake.png
+HTML_EXTRA_FILES       = maze_simulator_build2.png \
+                         maze_simulator_build1.png \
+                         build_cmake.png
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
