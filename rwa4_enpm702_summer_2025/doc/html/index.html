@@ -109,6 +109,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 Overview</h1>
 <p>The Micromouse Maze Interface provides methods to control and visualize a robot navigating a maze. The methods have been refactored from the original versions to use snake_case naming conventions and instance methods instead of static methods.</p>
 <p>The API communicates with an external maze simulator through a text-based protocol using standard I/O streams, enabling modular design and easy testing.</p>
+<p>See:</p>
+<ul>
+<li><a href="https://github.com/mackorone/mms" target="_blank" rel="noopener noreferrer">Micromouse Simulator Homepage</a></li>
+<li><a href="https://github.com/mackorone/mms-cpp/tree/master" target="_blank" rel="noopener noreferrer">Micromouse Simulator CPP Example</a></li>
+</ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Features</h1>
 <ul>
@@ -196,9 +201,9 @@ Reset Handling</h2>
 Communication Protocol</h1>
 <p>The API uses three standard I/O streams for communication:</p>
 <ul>
-<li>**<code>std::cout</code>** - Sends commands to the external simulator</li>
-<li>**<code>std::cin</code>** - Receives responses from the simulator</li>
-<li>**<code>std::cerr</code>** - Outputs debug information separate from the protocol</li>
+<li><b>std::cout</b> - Sends commands to the external simulator</li>
+<li><b>std::cin</b> - Receives responses from the simulator</li>
+<li><b>std::cerr</b> - Outputs debug information separate from the protocol. Use <b>std::cerr</b> to print in the simulator's <b>Run Output</b> tab.</li>
 </ul>
 <p>This design enables:</p><ul>
 <li>Process separation between solver and simulator</li>
@@ -214,17 +219,8 @@ Algorithm</h1>
 <li>Turn right when blocked until a path is found</li>
 <li>Move forward and repeat</li>
 </ol>
-<p>This simple algorithm will solve any simply-connected maze by following the left wall until reaching the exit.</p>
-<h1><a class="anchor" id="autotoc_md16"></a>
-Class Structure</h1>
-<p>The width and heigh are set to 16 as this is the maze dimensions we will be using in this assignment. </p><div class="fragment"><div class="line"><span class="keyword">class </span>MazeControlAPI {</div>
-<div class="line"><span class="keyword">private</span>:</div>
-<div class="line">    <span class="keywordtype">short</span> width_ = 16;   <span class="comment">// Maze width</span></div>
-<div class="line">    <span class="keywordtype">short</span> height_ = 16;  <span class="comment">// Maze height</span></div>
-<div class="line"><span class="keyword">public</span>:</div>
-<div class="line">    <span class="comment">// Navigation, detection, and manipulation methods</span></div>
-<div class="line">};</div>
-</div><!-- fragment --> </div></div><!-- PageDoc -->
+<p>This simple algorithm will solve any simply-connected maze by following the left wall until reaching the exit. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

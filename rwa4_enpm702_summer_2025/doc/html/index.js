@@ -17,6 +17,5 @@ var index =
       [ "Reset Handling", "index.html#autotoc_md13", null ]
     ] ],
     [ "Communication Protocol", "index.html#autotoc_md14", null ],
-    [ "Algorithm", "index.html#autotoc_md15", null ],
-    [ "Class Structure", "index.html#autotoc_md16", null ]
+    [ "Algorithm", "index.html#autotoc_md15", null ]
 ];

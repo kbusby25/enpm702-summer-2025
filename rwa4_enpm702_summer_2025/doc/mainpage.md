@@ -5,6 +5,12 @@ The Micromouse Maze Interface provides methods to control and visualize a robot 
 
 The API communicates with an external maze simulator through a text-based protocol using standard I/O streams, enabling modular design and easy testing.
 
+See:
+
+- <a href="https://github.com/mackorone/mms" target="_blank" rel="noopener noreferrer">Micromouse Simulator Homepage</a>
+- <a href="https://github.com/mackorone/mms-cpp/tree/master" target="_blank" rel="noopener noreferrer">Micromouse Simulator CPP Example</a>
+
+
 ## Features
 - Real-time maze navigation with bidirectional communication
 - Wall detection and avoidance capabilities
@@ -80,9 +86,9 @@ The main API is provided through the `MazeControlAPI` class which offers:
 ## Communication Protocol
 The API uses three standard I/O streams for communication:
 
-- **`std::cout`** - Sends commands to the external simulator
-- **`std::cin`** - Receives responses from the simulator
-- **`std::cerr`** - Outputs debug information separate from the protocol
+- **std::cout** - Sends commands to the external simulator
+- **std::cin** - Receives responses from the simulator
+- **std::cerr** - Outputs debug information separate from the protocol. Use **std::cerr** to print in the simulator's **Run Output** tab.
 
 This design enables:
 - Process separation between solver and simulator
@@ -98,16 +104,3 @@ The solver provided in the main function is used for demonstration purposes and 
 3. Move forward and repeat
 
 This simple algorithm will solve any simply-connected maze by following the left wall until reaching the exit.
-
-## Class Structure
-
-The width and heigh are set to 16 as this is the maze dimensions we will be using in this assignment.
-```cpp
-class MazeControlAPI {
-private:
-    short width_ = 16;   // Maze width
-    short height_ = 16;  // Maze height
-public:
-    // Navigation, detection, and manipulation methods
-};
-```
